@@ -21,6 +21,7 @@ const  handleShowAll=()=>{
 
 const displayAllPhones=(phones)=>{
   const phoneContainer = document.getElementById('phones-container')
+  
   phones.forEach(element => {
     const{image,slug,brand}=element
     console.log(element);
