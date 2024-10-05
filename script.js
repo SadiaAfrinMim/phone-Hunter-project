@@ -1,6 +1,6 @@
-const loadAllPhones = async(status,brandName) =>{
+const loadAllPhones = async(status,searchText) =>{
   document.getElementById('spinner').style.display = 'none'
-const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${brandName?brandName:"iphone"}`)
+const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText?searchText:"iphone"}`)
 const data = await res.json()
 if(status){
   displayAllPhones(data.data)
@@ -14,14 +14,12 @@ else{
 
 
 }
-const  handleShowAll=()=>{
-  loadAllPhones(true)
 
-}
 
 const displayAllPhones=(phones)=>{
   const phoneContainer = document.getElementById('phones-container')
   
+  phoneContainer.innerHTML = " "
   phones.forEach(element => {
     const{image,slug,brand}=element
     console.log(element);
@@ -45,6 +43,11 @@ phoneContainer.appendChild(div)
     
   });
   console.log(phones);
+}
+
+const  handleShowAll=()=>{
+  loadAllPhones(true)
+
 }
 
 const handleSearch=()=>{
